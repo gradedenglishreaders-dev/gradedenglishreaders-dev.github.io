@@ -408,8 +408,8 @@ body {
 .switch-wrapper {
     position: relative;
     display: inline-block;
-    width: 36px;
-    height: 20px;
+    width: 28px;
+    height: 16px;
 }
 
 .switch-wrapper input {
@@ -433,8 +433,8 @@ body {
 .switch-slider:before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
     left: 2px;
     bottom: 2px;
     background-color: white;
@@ -448,7 +448,7 @@ input:checked + .switch-slider {
 }
 
 input:checked + .switch-slider:before {
-    transform: translateX(16px);
+    transform: translateX(12px);
 }
 
 .filter-column {
