@@ -23302,5 +23302,14 @@
       "photos/cover_3.webp"
     ],
     "message_id": 3
+  },
+  {
+    "title": "словник 15",
+    "publisher": "Penguin Readers",
+    "level": "B1",
+    "coverUrls": [
+      "photos/cover_7.webp"
+    ],
+    "message_id": 7
   }
 ]
