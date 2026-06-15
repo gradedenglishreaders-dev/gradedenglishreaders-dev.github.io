@@ -18,31 +18,14 @@ function getImageUrl(url) {
     if (!url) return 'study-icon.png';
     if (url === 'study-icon.png') return url;
     if (isLocal || url.startsWith('http')) return url;
-    
+
     let baseUrl = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
     if (!baseUrl.endsWith('/')) baseUrl += '/';
     const absoluteUrl = baseUrl + url;
-    
+
     // Використовуємо wsrv.nl для ресайзу до 300px та стиснення в WebP (80%)
     return `https://wsrv.nl/?url=${absoluteUrl.replace(/^https?:\/\//, '')}&w=300&output=webp&q=80`;
 }
-
-// Конфігурація Firebase, яку ти надав
-const firebaseConfig = {
-    apiKey: "AIzaSyC51Qc4m3GIKCKmnO_PyKVwLX15PcDs_-4",
-    authDomain: "gradedenglishreaders-ccdcb.firebaseapp.com",
-    databaseURL: "https://gradedenglishreaders-ccdcb-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "gradedenglishreaders-ccdcb",
-    storageBucket: "gradedenglishreaders-ccdcb.firebasestorage.app",
-    messagingSenderId: "433844412188",
-    appId: "1:433844412188:web:81fbcaa187186ab594a4d9"
-};
-
-// Ініціалізуємо Firebase
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
-const database = firebase.database();
 
 // Офіційне посилання на канал
 const BASE_CHANNEL_URL = 'https://t.me/gradedenglishreaders';
@@ -63,120 +46,23 @@ const ITEMS_PER_PAGE = 30;
 
 const loadMoreBtn = document.getElementById('load-more-btn');
 
-// Функція для завантаження даних з Firebase
+// Функція для завантаження даних (тепер тільки статичний books.json)
 async function fetchBooks() {
     try {
-        let cachedBooks = [];
-        let maxMessageId = 0;
-        
-        // Зчитуємо кеш з LocalStorage
-        const cacheString = localStorage.getItem('hubBooksCache');
-        if (cacheString) {
-            try {
-                cachedBooks = JSON.parse(cacheString);
-            } catch (e) {
-                console.error("Помилка читання кешу", e);
-                cachedBooks = [];
-            }
+
+        if (totalCount) {
+            const currentVal = parseInt(totalCount.textContent) || 0;
+            animateValue(totalCount, currentVal, allBooks.length, 1200);
         }
-
-        // Якщо кеш порожній (перший візит), пробуємо скачати статичну базу
-        if (!cachedBooks || cachedBooks.length === 0) {
-            try {
-                console.log("Локальний кеш порожній. Завантажуємо статичний books.json...");
-                const response = await fetch('books.json');
-                if (response.ok) {
-                    const staticData = await response.json();
-                    cachedBooks = Array.isArray(staticData) ? staticData : Object.values(staticData);
-                    console.log(`Успішно завантажено ${cachedBooks.length} книг зі статичного файлу.`);
-                } else {
-                    console.log("Файл books.json не знайдено, продовжуємо без нього.");
-                }
-            } catch (e) {
-                console.log("Файл books.json не завантажено:", e.message);
-            }
-        }
-
-        // Знаходимо максимальний message_id у кеші (або статичній базі)
-        if (Array.isArray(cachedBooks) && cachedBooks.length > 0) {
-            maxMessageId = Math.max(...cachedBooks.map(b => b.message_id || 0));
-        } else {
-            cachedBooks = [];
-        }
-
-        let query = database.ref('books');
-        
-        // Якщо є кеш, завантажуємо ТІЛЬКИ нові книги
-        if (maxMessageId > 0) {
-            query = query.orderByChild('message_id').startAt(maxMessageId + 1);
-        }
-
-        let newBooks = [];
-        try {
-            const snapshot = await query.once('value');
-            if (snapshot.exists()) {
-                const data = snapshot.val();
-                newBooks = Array.isArray(data) ? data : Object.values(data);
-                newBooks = newBooks.filter(book => book !== null);
-            }
-        } catch (firebaseError) {
-            console.error("Помилка підключення до Firebase (можливо ліміт вичерпано):", firebaseError);
-            // Продовжуємо роботу, бо у нас може бути статична база в cachedBooks!
-        }
-
-        if (newBooks.length > 0 || cachedBooks.length > 0) {
-            // Об'єднуємо старі і нові книги, уникаючи дублікатів
-            const uniqueBooks = [];
-            const seenIds = new Set();
-            
-            for (const b of [...cachedBooks, ...newBooks]) {
-                if (b.message_id) {
-                    if (!seenIds.has(b.message_id)) {
-                        seenIds.add(b.message_id);
-                        uniqueBooks.push(b);
-                    }
-                } else {
-                    uniqueBooks.push(b); // Якщо немає ID, просто додаємо
-                }
-            }
-            
-            allBooks = uniqueBooks;
-            filteredBooks = [...allBooks];
-            
-            // Якщо були завантажені НОВІ книги, оновлюємо кеш
-            if (newBooks.length > 0) {
-                localStorage.setItem('hubBooksCache', JSON.stringify(allBooks));
-                console.log(`Завантажено ${newBooks.length} нових книг з Firebase. Всього у кеші: ${allBooks.length}`);
-            } else {
-                console.log(`Firebase не повернув нових книг. Використовуємо кеш (${allBooks.length} книг).`);
-            }
-
-            // Перевіряємо, чи є книги у видавництв. Якщо ні - додаємо (Stay Tuned) червоним
-            pubButtons.forEach(btn => {
-                const pubName = btn.dataset.pub;
-                if (pubName !== 'all') {
-                    const hasBooks = allBooks.some(b => b.publisher === pubName);
-                    if (!hasBooks && ['Easy Classic', 'Who HQ Reader', 'Step Into Reading', 'Oxford Bookworms'].includes(pubName)) {
-                        btn.innerHTML = `${pubName} <span style="color: #ef4444; font-size: 11px; margin-left: 4px;">(Stay Tuned)</span>`;
-                    } else {
-                        btn.innerHTML = pubName;
-                    }
-                }
-            });
-
-            if (totalCount) {
-                const currentVal = parseInt(totalCount.textContent) || 0;
-                animateValue(totalCount, currentVal, allBooks.length, 1200);
-            }
-            renderBooks(true);
-        } else {
-            console.log("Даних немає ні в кеші, ні в базі");
-            booksContainer.innerHTML = '<p style="text-align: center; width: 100%; color: var(--text-muted);">Books are not loaded in the database yet.</p>';
-        }
-    } catch (error) {
-        console.error('Помилка завантаження з Firebase:', error);
-        booksContainer.innerHTML = '<p style="text-align: center; width: 100%; color: #ef4444;">Database connection error. Please try refreshing.</p>';
+        renderBooks(true);
+    } else {
+        console.log("Даних немає ні в кеші, ні в базі");
+        booksContainer.innerHTML = '<p style="text-align: center; width: 100%; color: var(--text-muted);">Books are not loaded in the database yet.</p>';
     }
+} catch (error) {
+    console.error('Помилка завантаження з Firebase:', error);
+    booksContainer.innerHTML = '<p style="text-align: center; width: 100%; color: #ef4444;">Database connection error. Please try refreshing.</p>';
+}
 }
 
 // Рендер книг
