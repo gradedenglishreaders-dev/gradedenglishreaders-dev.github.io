@@ -210,6 +210,8 @@ pubButtons.forEach(btn => {
         if (currentPubFilter === 'National Geographic') {
             document.querySelectorAll('.cefr-btn').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.blackcat-btn').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.penguin-btn').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.macmillan-btn').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.natgeo-btn').forEach(el => el.style.display = 'inline-block');
             currentLvlFilter = 'all';
             lvlButtons.forEach(b => b.classList.remove('active'));
@@ -217,16 +219,36 @@ pubButtons.forEach(btn => {
         } else if (currentPubFilter === 'Black Cat') {
             document.querySelectorAll('.cefr-btn').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.natgeo-btn').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.penguin-btn').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.macmillan-btn').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.blackcat-btn').forEach(el => el.style.display = 'inline-block');
             currentLvlFilter = 'all';
             lvlButtons.forEach(b => b.classList.remove('active'));
             document.querySelector('.lvl-btn[data-level="all"]').classList.add('active');
         } else {
+            // Для всіх інших - показуємо CEFR
             document.querySelectorAll('.cefr-btn').forEach(el => el.style.display = 'inline-block');
             document.querySelectorAll('.natgeo-btn').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.blackcat-btn').forEach(el => el.style.display = 'none');
-            // Якщо зараз вибрано підкатегорію NatGeo або BlackCat, скидаємо на Всі рівні
-            if (!['all', 'A0-A1', 'A1', 'A2', 'A2-B1', 'B1', 'B2', 'C1'].includes(currentLvlFilter)) {
+            
+            // Якщо Penguin Readers - показуємо його кнопки
+            if (currentPubFilter === 'Penguin Readers') {
+                document.querySelectorAll('.penguin-btn').forEach(el => el.style.display = 'inline-block');
+                document.querySelectorAll('.macmillan-btn').forEach(el => el.style.display = 'none');
+            } 
+            // Якщо Macmillan - показуємо його кнопки
+            else if (currentPubFilter === 'Macmillan Reader') {
+                document.querySelectorAll('.macmillan-btn').forEach(el => el.style.display = 'inline-block');
+                document.querySelectorAll('.penguin-btn').forEach(el => el.style.display = 'none');
+            } 
+            // В інших випадках ховаємо
+            else {
+                document.querySelectorAll('.penguin-btn').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.macmillan-btn').forEach(el => el.style.display = 'none');
+            }
+
+            // Якщо вибрана підкатегорія, якої тут немає - скидаємо на "All"
+            if (!['all', 'A0-A1', 'A1', 'A2', 'A2-B1', 'B1', 'B2', 'C1', 'Penguin Young Reader', 'Penguin Kids', 'Macmillan Literature Collections'].includes(currentLvlFilter)) {
                 currentLvlFilter = 'all';
                 lvlButtons.forEach(b => b.classList.remove('active'));
                 document.querySelector('.lvl-btn[data-level="all"]').classList.add('active');

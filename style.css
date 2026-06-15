@@ -291,6 +291,10 @@ body {
 .lvl-btn[data-level="Green Apple"].active { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
 .lvl-btn[data-level="Reading N Training"].active { background: #ede9fe; color: #5b21b6; border-color: #ddd6fe; }
 
+.lvl-btn[data-level="Penguin Young Reader"].active { background: #fef08a; color: #ca8a04; border-color: #fde047; }
+.lvl-btn[data-level="Penguin Kids"].active { background: #fecdd3; color: #e11d48; border-color: #fda4af; }
+.lvl-btn[data-level="Macmillan Literature Collections"].active { background: #e2e8f0; color: #475569; border-color: #cbd5e1; }
+
 .pub-btn[data-pub="all"].active {
     background: #f1f5f9;
     color: var(--text-main);
@@ -617,6 +621,10 @@ body {
 .tag.level-Early-Read { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
 .tag.level-Green-Apple { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
 .tag.level-Reading-N-Training { background: #ede9fe; color: #5b21b6; border-color: #ddd6fe; }
+
+.tag.level-Penguin-Young-Reader { background: #fef08a; color: #ca8a04; border-color: #fde047; }
+.tag.level-Penguin-Kids { background: #fecdd3; color: #e11d48; border-color: #fda4af; }
+.tag.level-Macmillan-Literature-Collections { background: #e2e8f0; color: #475569; border-color: #cbd5e1; }
 
 .download-btn {
     width: 100%;

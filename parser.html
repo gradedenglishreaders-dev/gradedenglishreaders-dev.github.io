@@ -92,8 +92,11 @@
                         const allTags = tags.join(" ");
                         
                         // Визначаємо видавництво
-                        if (allTags.includes('penguin')) currentPublisher = 'Penguin Readers';
+                        if (allTags.includes('penguin_young_reader')) currentPublisher = 'Penguin Readers';
+                        else if (allTags.includes('penguin_kids')) currentPublisher = 'Penguin Readers';
+                        else if (allTags.includes('penguin')) currentPublisher = 'Penguin Readers';
                         else if (allTags.includes('cambridge')) currentPublisher = 'Cambridge Reader';
+                        else if (allTags.includes('macmillan_literature_collections')) currentPublisher = 'Macmillan Reader';
                         else if (allTags.includes('macmillan')) currentPublisher = 'Macmillan Reader';
                         else if (allTags.includes('black_cat')) currentPublisher = 'Black Cat';
                         else if (allTags.includes('national_geographic')) currentPublisher = 'National Geographic';
@@ -104,8 +107,15 @@
                         else if (allTags.includes('who_hq_reader')) currentPublisher = 'Who HQ Reader';
 
                         // Визначаємо рівень з урахуванням видавництва
+                        // Penguin subcategories
+                        if (allTags.includes('penguin_young_reader')) currentLevel = 'Penguin Young Reader';
+                        else if (allTags.includes('penguin_kids')) currentLevel = 'Penguin Kids';
+                        
+                        // Macmillan subcategories
+                        else if (allTags.includes('macmillan_literature_collections')) currentLevel = 'Macmillan Literature Collections';
+
                         // National Geographic subcategories
-                        if (allTags.includes('footprint_reader')) currentLevel = 'Footprint Reader';
+                        else if (allTags.includes('footprint_reader')) currentLevel = 'Footprint Reader';
                         else if (allTags.includes('page_turners_reader')) currentLevel = 'Page Turners';
                         else if (allTags.includes('foundation_reader')) currentLevel = 'Foundation Reader';
                         else if (allTags.includes('windows_on_literacy')) currentLevel = 'Windows on Literacy';
