@@ -69,6 +69,18 @@ body {
     box-shadow: 0 4px 8px rgba(37, 99, 235, 0.1);
 }
 
+.donate-badge {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    color: #d97706;
+    border: 1px solid #fde68a;
+    box-shadow: 0 2px 4px rgba(217, 119, 6, 0.05);
+}
+
+.donate-badge:hover {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    box-shadow: 0 4px 8px rgba(217, 119, 6, 0.1);
+}
+
 .title-group {
     display: flex;
     align-items: center;

@@ -4,21 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graded English Readers Database</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <title>Graded English Readers Database | Download Books</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Download graded English readers of all levels (A1, A2, B1, B2, C1). Free English books from Penguin Readers, Macmillan, Black Cat, National Geographic and more.">
+    <meta name="keywords" content="graded readers, english books, learn english, penguin readers, macmillan readers, a1 english books, b1 english readers, download english books, cefr books, easy english">
+    <meta name="author" content="Graded English Readers">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gradedenglishreaders-dev.github.io/">
+    <meta property="og:title" content="Graded English Readers Database">
+    <meta property="og:description" content="Download free graded English readers of all levels (A1-C1). Huge library with search and filtering.">
+    <meta property="og:image" content="https://gradedenglishreaders-dev.github.io/study-icon.png">
+
+    <link rel="stylesheet" href="style.css?v=5">
     <link rel="icon" href="./study-icon.png" type="image/x-icon">
 </head>
 
 <body>
     <header class="site-header">
         <div class="header-top">
-            <div class="dev-badge-container">
+            <div class="dev-badge-container"
+                style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
                 <a id="dev-link" href="https://t.me/An1sov" class="dev-badge">
                     <svg width="16" height="12" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"
                         style="vertical-align: middle; margin-right: 6px; border-radius: 2px;">
                         <rect width="24" height="8" fill="#0057B7" />
                         <rect y="8" width="24" height="8" fill="#FFD700" />
                     </svg> Contact Developer
+                </a>
+                <a id="donate-link" href="#"
+                    onclick="alert('Посилання на банку буде додано згодом! Дякуємо за бажання підтримати ❤️'); return false;"
+                    class="dev-badge donate-badge">
+                    ☕ Support Developer
                 </a>
             </div>
             <div class="title-group">
@@ -103,7 +123,8 @@
                     <button class="sidebar-btn pub-btn" data-pub="Who HQ Reader">Who HQ Reader</button>
                 </div>
 
-                <div style="margin-top: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; padding-left: 12px;">
+                <div
+                    style="margin-top: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; padding-left: 12px;">
                     <label class="switch-wrapper" style="margin: 0; display: inline-block;">
                         <input type="checkbox" id="shuffle-checkbox" checked>
                         <span class="switch-slider"></span>
@@ -113,7 +134,8 @@
                             document.getElementById('shuffle-checkbox').checked = false;
                         }
                     </script>
-                    <span style="font-size: 13px; font-weight: 500; color: #64748b; cursor: pointer; user-select: none;" onclick="document.getElementById('shuffle-checkbox').click()">Randomize</span>
+                    <span style="font-size: 13px; font-weight: 500; color: #64748b; cursor: pointer; user-select: none;"
+                        onclick="document.getElementById('shuffle-checkbox').click()">Randomize</span>
                 </div>
 
                 <div class="ad-block" style="padding: 0; background: transparent; border: none; box-shadow: none;">
