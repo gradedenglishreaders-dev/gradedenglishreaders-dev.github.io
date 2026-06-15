@@ -87,7 +87,8 @@ async function fetchBooks() {
             animateValue(totalCount, currentVal, allBooks.length, 1200);
         }
         
-        renderBooks(true);
+        // Рендеримо з перемішуванням при першому завантаженні
+        filterBooks(true);
     } catch (error) {
         console.error("Помилка завантаження книг:", error);
         booksContainer.innerHTML = '<p class="error-msg" style="text-align: center; grid-column: 1/-1; color: var(--text-color);">Oops! Failed to load books. Please refresh the page.</p>';
@@ -182,9 +183,9 @@ loadMoreBtn.addEventListener('click', () => {
     renderBooks(false); // append, no reset
 });
 
-// Фільтрація
-function filterBooks() {
-    const searchTerm = searchInput.value.toLowerCase();
+// Додаємо параметр shouldShuffle (за замовчуванням false)
+function filterBooks(shouldShuffle = false) {
+    const searchTerm = searchInput.value.toLowerCase().trim();
 
     filteredBooks = allBooks.filter(book => {
         if (!book) return false;
@@ -198,22 +199,25 @@ function filterBooks() {
         return matchesSearch && matchesPub && matchesLvl;
     });
 
-    // Якщо не вибрано конкретного рівня і немає пошуку — перемішуємо в різнобій
-    if (currentLvlFilter === 'all' && searchTerm === '') {
+    if (shouldShuffle) {
+        // Якщо клікнули на кнопку фільтра — перемішуємо результати
         for (let i = filteredBooks.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [filteredBooks[i], filteredBooks[j]] = [filteredBooks[j], filteredBooks[i]];
         }
-    } else {
-        // Якщо вибрано рівень або є пошук — сортуємо за новизною
+    } else if (searchTerm !== '') {
+        // Якщо працює пошук — сортуємо за новизною
         filteredBooks.sort((a, b) => (b.message_id || 0) - (a.message_id || 0));
+    } else {
+        // Якщо це просто рендер після "Показати ще" або щось інше, де shouldShuffle=false і немає пошуку
+        // Залишаємо той порядок, що є
     }
 
     renderBooks(true);
 }
 
-// Обробники подій для пошуку
-searchInput.addEventListener('input', filterBooks);
+// Обробники подій для пошуку (без перемішування)
+searchInput.addEventListener('input', () => filterBooks(false));
 
 // Обробники для кнопок видавництва
 pubButtons.forEach(btn => {
@@ -270,7 +274,7 @@ pubButtons.forEach(btn => {
             }
         }
 
-        filterBooks();
+        filterBooks(true);
     });
 });
 
@@ -280,7 +284,7 @@ lvlButtons.forEach(btn => {
         lvlButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentLvlFilter = btn.dataset.level;
-        filterBooks();
+        filterBooks(true);
     });
 });
 
