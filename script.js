@@ -87,8 +87,9 @@ async function fetchBooks() {
             animateValue(totalCount, currentVal, allBooks.length, 1200);
         }
 
-        // Рендеримо з перемішуванням при першому завантаженні
-        filterBooks(true);
+        // Рендеримо з урахуванням стану тумблера
+        const isShuffleOn = document.getElementById('shuffle-checkbox') ? document.getElementById('shuffle-checkbox').checked : true;
+        filterBooks(isShuffleOn);
     } catch (error) {
         console.error("Помилка завантаження книг:", error);
         booksContainer.innerHTML = '<p class="error-msg" style="text-align: center; grid-column: 1/-1; color: var(--text-color);">Oops! Failed to load books. Please refresh the page.</p>';
@@ -225,7 +226,16 @@ searchInput.addEventListener('input', () => filterBooks(false));
 // Обробник для тумблера перемішування
 const shuffleCheckboxElem = document.getElementById('shuffle-checkbox');
 if (shuffleCheckboxElem) {
+    // Відновлюємо стан із localStorage при завантаженні сторінки
+    const savedShuffleState = localStorage.getItem('shuffleMode');
+    if (savedShuffleState !== null) {
+        shuffleCheckboxElem.checked = savedShuffleState === 'true';
+    }
+
     shuffleCheckboxElem.addEventListener('change', () => {
+        // Зберігаємо вибір користувача в браузері
+        localStorage.setItem('shuffleMode', shuffleCheckboxElem.checked);
+        
         // Якщо тумблер увімкнули або вимкнули, оновлюємо видачу. 
         // Якщо ввімкнули - перемішуємо. Якщо вимкнули - відсортує за датою.
         filterBooks(shuffleCheckboxElem.checked);
