@@ -23311,5 +23311,14 @@
       "photos/cover_7046.webp"
     ],
     "message_id": 7046
+  },
+  {
+    "title": "Penguins",
+    "publisher": "Step Into Reading",
+    "level": "A1",
+    "coverUrls": [
+      "photos/cover_7043.webp"
+    ],
+    "message_id": 7043
   }
 ]
