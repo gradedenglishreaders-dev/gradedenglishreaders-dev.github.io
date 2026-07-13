@@ -23482,5 +23482,14 @@
       "photos/cover_7112.webp"
     ],
     "message_id": 7112
+  },
+  {
+    "title": "Cinderella",
+    "publisher": "Step Into Reading",
+    "level": "A1",
+    "coverUrls": [
+      "photos/cover_7124.webp"
+    ],
+    "message_id": 7124
   }
 ]
