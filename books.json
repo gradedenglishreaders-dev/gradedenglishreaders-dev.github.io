@@ -23500,5 +23500,14 @@
       "photos/cover_7103.webp"
     ],
     "message_id": 7103
+  },
+  {
+    "title": "Aladdin",
+    "publisher": "Step Into Reading",
+    "level": "A1",
+    "coverUrls": [
+      "photos/cover_7130.webp"
+    ],
+    "message_id": 7130
   }
 ]
