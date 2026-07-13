@@ -23302,5 +23302,14 @@
       "photos/cover_7040.webp"
     ],
     "message_id": 7040
+  },
+  {
+    "title": "Peanut",
+    "publisher": "Step Into Reading",
+    "level": "A1",
+    "coverUrls": [
+      "photos/cover_7046.webp"
+    ],
+    "message_id": 7046
   }
 ]
