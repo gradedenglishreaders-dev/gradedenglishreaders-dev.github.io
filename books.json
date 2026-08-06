@@ -24121,5 +24121,14 @@
       "photos/cover_7325.webp"
     ],
     "message_id": 7325
+  },
+  {
+    "title": "The Magic Apple",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7322.webp"
+    ],
+    "message_id": 7322
   }
 ]
