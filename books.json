@@ -24249,5 +24249,55 @@
       "photos/cover_7355_2.webp"
     ],
     "message_id": 7355
+  },
+  {
+    "title": "Colorful Chameleons",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7358_1.webp",
+      "photos/cover_7358_2.webp"
+    ],
+    "message_id": 7358
+  },
+  {
+    "title": "Elephants Life in the Wild",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7361_1.webp",
+      "photos/cover_7361_2.webp"
+    ],
+    "message_id": 7361
+  },
+  {
+    "title": "Whales - The Gentle Giants",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7364_1.webp",
+      "photos/cover_7364_2.webp"
+    ],
+    "message_id": 7364
+  },
+  {
+    "title": "Stingrays",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7367_1.webp",
+      "photos/cover_7367_2.webp"
+    ],
+    "message_id": 7367
+  },
+  {
+    "title": "Wild Wild Wolves",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7370_1.webp",
+      "photos/cover_7370_2.webp"
+    ],
+    "message_id": 7370
   }
 ]
