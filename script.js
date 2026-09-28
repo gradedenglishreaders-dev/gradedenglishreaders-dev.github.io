@@ -160,9 +160,14 @@ function renderBooks(reset = true) {
                 </div>
                 <div class="book-info">
                     <h3 class="book-title">${book.title || 'Unknown Title'}</h3>
-                    <div class="tags">
-                        <span class="tag pub-${pubClass}">${pubNameDisplay}</span>
-                        <span class="tag level-${book.level ? book.level.replace(/\s+/g, '-') : 'Unknown'}">${book.level || 'Unknown'}</span>
+                    <div class="tags-and-share" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; margin-top: auto;">
+                        <div class="tags" style="margin-bottom: 0;">
+                            <span class="tag pub-${pubClass}">${pubNameDisplay}</span>
+                            <span class="tag level-${book.level ? book.level.replace(/\s+/g, '-') : 'Unknown'}">${book.level || 'Unknown'}</span>
+                        </div>
+                        <button class="share-btn" data-title="${(book.title || '').replace(/"/g, '&quot;')}" onclick="shareBook(event)" title="Copy link to this book">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        </button>
                     </div>
                     <a href="${downloadLink}" class="download-btn" target="_blank">
                         Download PDF
@@ -317,8 +322,39 @@ lvlButtons.forEach(btn => {
     });
 });
 
+// Перевірка параметрів URL при завантаженні
+const urlParams = new URLSearchParams(window.location.search);
+const searchQuery = urlParams.get('search');
+if (searchQuery) {
+    searchInput.value = searchQuery;
+    const shuffleCheckboxElem = document.getElementById('shuffle-checkbox');
+    if (shuffleCheckboxElem) {
+        shuffleCheckboxElem.checked = false;
+        localStorage.setItem('shuffleMode', 'false');
+    }
+}
+
 // Запускаємо додаток
 fetchBooks();
+
+window.shareBook = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const btn = event.currentTarget;
+    const title = btn.getAttribute('data-title');
+    const url = new URL(window.location.origin + window.location.pathname);
+    url.searchParams.set('search', title);
+    
+    navigator.clipboard.writeText(url.toString()).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        setTimeout(() => {
+            btn.innerHTML = originalHtml;
+        }, 2000);
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
+};
 
 // Логіка модального вікна для зображень
 const imageModal = document.getElementById('image-modal');

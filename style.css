@@ -1177,3 +1177,22 @@ input:checked + .switch-slider:before {
 .book-cover {
     cursor: zoom-in;
 }
+
+/* Share button styles */
+.share-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.share-btn:hover {
+    background: #f1f5f9;
+    color: var(--primary-blue);
+}
