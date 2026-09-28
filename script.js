@@ -183,7 +183,7 @@ function renderBooks(reset = true) {
     // Управління кнопкою "Показати ще"
     if (currentDisplayedCount < filteredBooks.length) {
         loadMoreBtn.style.display = 'inline-block';
-        loadMoreBtn.textContent = "Show 40 more books";
+        loadMoreBtn.textContent = "Show 30 more books";
     } else {
         loadMoreBtn.style.display = 'none';
     }
@@ -246,7 +246,7 @@ if (shuffleCheckboxElem) {
     shuffleCheckboxElem.addEventListener('change', () => {
         // Зберігаємо вибір користувача в браузері
         localStorage.setItem('shuffleMode', shuffleCheckboxElem.checked);
-        
+
         // Якщо тумблер увімкнули або вимкнули, оновлюємо видачу. 
         // Якщо ввімкнули - перемішуємо. Якщо вимкнули - відсортує за датою.
         filterBooks(shuffleCheckboxElem.checked);
@@ -337,14 +337,14 @@ if (searchQuery) {
 // Запускаємо додаток
 fetchBooks();
 
-window.shareBook = function(event) {
+window.shareBook = function (event) {
     event.preventDefault();
     event.stopPropagation();
     const btn = event.currentTarget;
     const title = btn.getAttribute('data-title');
     const url = new URL(window.location.origin + window.location.pathname);
     url.searchParams.set('search', title);
-    
+
     navigator.clipboard.writeText(url.toString()).then(() => {
         const originalHtml = btn.innerHTML;
         btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';

@@ -118,7 +118,12 @@
     <div class="layout-container">
         <aside class="sidebar">
             <div class="sidebar-sticky">
-                <h3 class="sidebar-title">Publishers</h3>
+                <div class="sidebar-header">
+                    <h3 class="sidebar-title">Publishers</h3>
+                    <button class="sidebar-toggle-btn" aria-label="Toggle sidebar" onclick="document.querySelector('.layout-container').classList.toggle('sidebar-collapsed')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                </div>
                 <div class="filter-column" id="publisher-filters">
                     <button class="sidebar-btn pub-btn active" data-pub="all">All Publishers</button>
                     <button class="sidebar-btn pub-btn" data-pub="Penguin Readers">Penguin Readers</button>
