@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms | Graded English Readers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="study-icon.png" type="image/png">
+    <style>
+        .page-container {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            padding: 40px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            line-height: 1.7;
+            position: relative;
+        }
+        .page-container h1 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .page-container h2 {
+            font-size: 20px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+        .page-container p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            background: #eff6ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        .back-link:hover {
+            color: #1d4ed8;
+            background: #dbeafe;
+        }
+        
+        .lang-toggle {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 4px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: #ffffff;
+            color: var(--primary-blue);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive styles for privacy page */
+        @media (max-width: 768px) {
+            .page-container {
+                margin: 20px 16px 40px 16px;
+                padding: 20px;
+                border-radius: 12px;
+            }
+            .page-container h1 {
+                font-size: 24px;
+            }
+            .top-bar {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .lang-toggle {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-top">
+            <div class="title-group">
+                <h1 id="header-title">Privacy Policy & Legal Terms</h1>
+            </div>
+            <p class="subtitle" id="header-subtitle">Information about data usage and copyright compliance</p>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <div class="top-bar">
+            <a href="index.html" class="back-link" id="back-link-text">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Back to Library
+            </a>
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+                <button class="lang-btn" onclick="setLang('uk')" id="btn-uk">УКР</button>
+            </div>
+        </div>
+
+        <div id="content-en">
+            <h2>1. Legal Disclaimer & Copyright (DMCA)</h2>
+            <p>This website serves exclusively as an educational index and catalog for English learners. <strong>We do not host any of the books, files, or PDF documents on our own servers.</strong> All download links lead to files hosted by third-party services across the internet.</p>
+            <p>If you hold the copyright to any material linked on this site and wish for it to be removed from our directory, please contact us. We will process your request and remove the links immediately.</p>
+
+            <h2>2. Privacy Policy</h2>
+            <p>Your privacy is critically important to us. We do not require you to create an account, and we do not collect, store, or process any personally identifiable data. Your browsing history and reading preferences remain completely private to your device.</p>
+
+            <h2>3. Data Collection & Analytics</h2>
+            <p>We may use standard analytics tools (such as Google Analytics) to understand how visitors interact with our site. This helps us improve the user experience, optimize our layout, and understand which books are most popular. These tools may use cookies, but all data is anonymized and aggregated. We do not track individual users.</p>
+
+            <h2>4. Local Storage</h2>
+            <p>We use your browser's Local Storage solely to save your interface preferences (for example, remembering if you disabled the "Randomize" mode). This small amount of preference data never leaves your device and is never transmitted to our servers.</p>
+
+            <h2>5. External Links</h2>
+            <p>Our website contains links to external sites (where the PDFs are hosted). We have no control over the content, privacy policies, or practices of any third-party sites or services.</p>
+
+            <h2>6. Changes to This Policy</h2>
+            <p>We may update this policy from time to time as our website evolves. Any changes will be posted directly on this page.</p>
+
+            <p style="margin-top: 40px; font-size: 14px; padding-top: 20px; border-top: 1px solid #e2e8f0;"><em>Last updated: 2026</em></p>
+        </div>
+
+        <div id="content-uk" style="display: none;">
+            <h2>1. Юридична інформація та авторські права (DMCA)</h2>
+            <p>Цей веб-сайт слугує виключно як освітній каталог для тих, хто вивчає англійську мову. <strong>Ми не зберігаємо жодних книг, файлів або PDF-документів на власних серверах.</strong> Усі посилання на завантаження ведуть на файли, розміщені на сторонніх ресурсах у мережі Інтернет.</p>
+            <p>Якщо ви є власником авторських прав на будь-який матеріал, посилання на який розміщено на цьому сайті, і бажаєте, щоб його було видалено з нашого каталогу, будь ласка, зв'яжіться з нами. Ми розглянемо ваш запит і негайно видалимо відповідні посилання.</p>
+
+            <h2>2. Політика конфіденційності</h2>
+            <p>Ваша конфіденційність є надзвичайно важливою для нас. Ми не вимагаємо створення облікового запису і не збираємо, не зберігаємо та не обробляємо будь-які персональні дані. Ваша історія переглядів та читацькі вподобання залишаються повністю конфіденційними на вашому пристрої.</p>
+
+            <h2>3. Збір даних та аналітика</h2>
+            <p>Ми можемо використовувати стандартні інструменти аналітики (такі як Google Analytics), щоб розуміти, як відвідувачі взаємодіють з нашим сайтом. Це допомагає нам покращувати користувацький досвід, оптимізувати інтерфейс та розуміти, які книги є найбільш популярними. Ці інструменти можуть використовувати файли cookie, але всі дані є анонімними та узагальненими. Ми не відстежуємо окремих користувачів.</p>
+
+            <h2>4. Локальне сховище (Local Storage)</h2>
+            <p>Ми використовуємо локальне сховище вашого браузера виключно для збереження налаштувань інтерфейсу (наприклад, щоб запам'ятати, чи вимкнули ви режим "Randomize"). Цей невеликий обсяг даних ніколи не залишає ваш пристрій і не передається на наші сервери.</p>
+
+            <h2>5. Зовнішні посилання</h2>
+            <p>Наш веб-сайт містить посилання на зовнішні сайти (де безпосередньо розміщені PDF-файли). Ми не контролюємо вміст, політики конфіденційності або дії будь-яких сторонніх сайтів чи сервісів.</p>
+
+            <h2>6. Зміни до цієї політики</h2>
+            <p>Ми можемо час від часу оновлювати цю політику в міру розвитку нашого сайту. Будь-які зміни будуть публікуватися безпосередньо на цій сторінці.</p>
+
+            <p style="margin-top: 40px; font-size: 14px; padding-top: 20px; border-top: 1px solid #e2e8f0;"><em>Останнє оновлення: 2026</em></p>
+        </div>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            // Update buttons
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-uk').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            // Toggle content visibility
+            if(lang === 'en') {
+                document.getElementById('content-en').style.display = 'block';
+                document.getElementById('content-uk').style.display = 'none';
+                
+                // Update dynamic headers
+                document.title = "Privacy Policy & Terms | Graded English Readers";
+                document.getElementById('header-title').innerText = "Privacy Policy & Legal Terms";
+                document.getElementById('header-subtitle').innerText = "Information about data usage and copyright compliance";
+                document.getElementById('back-link-text').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Back to Library';
+            } else {
+                document.getElementById('content-uk').style.display = 'block';
+                document.getElementById('content-en').style.display = 'none';
+                
+                // Update dynamic headers
+                document.title = "Політика конфіденційності | Graded English Readers";
+                document.getElementById('header-title').innerText = "Політика конфіденційності та Правові умови";
+                document.getElementById('header-subtitle').innerText = "Інформація про використання даних та дотримання авторських прав";
+                document.getElementById('back-link-text').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Назад до бібліотеки';
+            }
+        }
+    </script>
+</body>
+</html>
