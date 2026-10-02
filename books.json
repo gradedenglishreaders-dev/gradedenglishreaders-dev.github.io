@@ -24559,5 +24559,45 @@
       "photos/cover_7448_munnmc7d_2.webp"
     ],
     "message_id": 7448
+  },
+  {
+    "title": "Christopher Columbus",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7451_muqqd218_1.webp",
+      "photos/cover_7451_muqqd5w3_2.webp"
+    ],
+    "message_id": 7451
+  },
+  {
+    "title": "Coco - A Family Mystery",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7454_muqqd8dc_1.webp",
+      "photos/cover_7454_muqqdaob_2.webp"
+    ],
+    "message_id": 7454
+  },
+  {
+    "title": "Coco - Miguel's Music",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7457_muqqddwx_1.webp",
+      "photos/cover_7457_muqqdje8_2.webp"
+    ],
+    "message_id": 7457
+  },
+  {
+    "title": "Down On The Funny Farm",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7460_muqqdlvf_1.webp",
+      "photos/cover_7460_muqqdnyc_2.webp"
+    ],
+    "message_id": 7460
   }
 ]
