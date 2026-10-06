@@ -24609,5 +24609,55 @@
       "photos/cover_7463_muqqt1yk_2.webp"
     ],
     "message_id": 7463
+  },
+  {
+    "title": "Encanto - Mirabel's Discovery",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7466_muw8yqjk_1.webp",
+      "photos/cover_7466_muw8yu8x_2.webp"
+    ],
+    "message_id": 7466
+  },
+  {
+    "title": "Fairies A True Story",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7469_muw8yxsq_1.webp",
+      "photos/cover_7469_muw8z06r_2.webp"
+    ],
+    "message_id": 7469
+  },
+  {
+    "title": "Fish Is Fish",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7472_muw8z346_1.webp",
+      "photos/cover_7472_muw8z5ih_2.webp"
+    ],
+    "message_id": 7472
+  },
+  {
+    "title": "Fox and Crow Are Not Friends",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7475_muw8z8lh_1.webp",
+      "photos/cover_7475_muw8zb7w_2.webp"
+    ],
+    "message_id": 7475
+  },
+  {
+    "title": "Frederich Douglass",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7478_muw8ze5e_1.webp",
+      "photos/cover_7478_muw8zhul_2.webp"
+    ],
+    "message_id": 7478
   }
 ]
