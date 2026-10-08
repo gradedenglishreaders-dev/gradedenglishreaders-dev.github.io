@@ -24679,5 +24679,25 @@
       "photos/cover_7484_muzau783_2.webp"
     ],
     "message_id": 7484
+  },
+  {
+    "title": "Heavy Duty Trucks",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7487_muzgj2ub_1.webp",
+      "photos/cover_7487_muzgj5jr_2.webp"
+    ],
+    "message_id": 7487
+  },
+  {
+    "title": "Hector's Hiccups",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7490_muzgj8bm_1.webp",
+      "photos/cover_7490_muzgjav5_2.webp"
+    ],
+    "message_id": 7490
   }
 ]
