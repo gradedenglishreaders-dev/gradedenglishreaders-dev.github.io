@@ -990,7 +990,7 @@ input:checked+.switch-slider:before {
 
     .layout-container.sidebar-collapsed .sidebar-btn[data-pub="all"]::before {
         content: "";
-        background-image: url('assets/images/study-icon.png');
+        background-image: url('/assets/images/study-icon.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -999,7 +999,7 @@ input:checked+.switch-slider:before {
 
     .layout-container.sidebar-collapsed .sidebar-btn[data-pub="Penguin Readers"]::before {
         content: "";
-        background-image: url('assets/icon/Penguin Books Logo.png');
+        background-image: url('/assets/icon/Penguin Books Logo.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -1017,7 +1017,7 @@ input:checked+.switch-slider:before {
 
     .layout-container.sidebar-collapsed .sidebar-btn[data-pub="Macmillan Reader"]::before {
         content: "";
-        background-image: url('assets/icon/Macmillan Reader.png');
+        background-image: url('/assets/icon/Macmillan Reader.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -1026,7 +1026,7 @@ input:checked+.switch-slider:before {
 
     .layout-container.sidebar-collapsed .sidebar-btn[data-pub="Black Cat"]::before {
         content: "";
-        background-image: url('assets/icon/black cat.png');
+        background-image: url('/assets/icon/black cat.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -1041,7 +1041,7 @@ input:checked+.switch-slider:before {
 
     .layout-container.sidebar-collapsed .sidebar-btn[data-pub="Oxford Bookworms"]::before {
         content: "";
-        background-image: url('assets/icon/oxford_bookworms.png');
+        background-image: url('/assets/icon/oxford_bookworms.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
