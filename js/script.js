@@ -15,8 +15,13 @@ function animateValue(obj, start, end, duration) {
 // Функція для динамічної оптимізації картинок через CDN
 const isLocal = window.location.hostname === '' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 function getImageUrl(url) {
-    if (!url) return 'study-icon.png';
-    if (url === 'study-icon.png') return url;
+    if (!url) return 'assets/images/study-icon.png';
+    if (url === 'study-icon.png') return 'assets/images/study-icon.png';
+    
+    if (url.startsWith('photos/') || url.startsWith('icon/')) {
+        url = 'assets/' + url;
+    }
+
     if (isLocal || url.startsWith('http')) return url;
 
     let baseUrl = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
@@ -51,7 +56,7 @@ async function fetchBooks() {
     try {
         console.log("Завантажуємо свіжий books.json...");
         // Додаємо випадковий параметр, щоб браузер не кешував старий файл
-        const response = await fetch(`books.json?v=${new Date().getTime()}`);
+        const response = await fetch(`data/books.json?v=${new Date().getTime()}`);
 
         if (!response.ok) {
             throw new Error(`Помилка HTTP: ${response.status}`);
