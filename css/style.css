@@ -1008,7 +1008,7 @@ input:checked+.switch-slider:before {
 
     .layout-container.sidebar-collapsed .sidebar-btn[data-pub="Cambridge Reader"]::before {
         content: "";
-        background-image: url('assets/icon/Cambridge Reader.png');
+        background-image: url('/assets/icon/Cambridge Reader.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
