@@ -12,24 +12,13 @@ function animateValue(obj, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
-// Функція для динамічної оптимізації картинок через CDN
-const isLocal = window.location.hostname === '' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+// Функція для отримання шляху до зображення
 function getImageUrl(url) {
-    if (!url) return 'assets/images/study-icon.png';
-    if (url === 'study-icon.png') return 'assets/images/study-icon.png';
-    
+    if (!url || url === 'study-icon.png') return 'assets/images/study-icon.png';
     if (url.startsWith('photos/') || url.startsWith('icon/')) {
-        url = 'assets/' + url;
+        return 'assets/' + url;
     }
-
-    if (isLocal || url.startsWith('http')) return url;
-
-    let baseUrl = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
-    if (!baseUrl.endsWith('/')) baseUrl += '/';
-    const absoluteUrl = baseUrl + url;
-
-    // Використовуємо wsrv.nl для ресайзу до 300px та стиснення в WebP (80%)
-    return `https://wsrv.nl/?url=${absoluteUrl.replace(/^https?:\/\//, '')}&w=300&output=webp&q=80`;
+    return url;
 }
 
 // Офіційне посилання на канал
@@ -134,11 +123,10 @@ function renderBooks(reset = true) {
             let sliderControls = '';
             if (Array.isArray(book.coverUrls) && book.coverUrls.length > 1) {
                 imagesHtml = book.coverUrls.map((url, imgIndex) => {
-                    const fullUrl = (url.startsWith('photos/') || url.startsWith('icon/')) ? 'assets/' + url : url;
-                    const optimizedUrl = getImageUrl(url);
+                    const fullUrl = getImageUrl(url);
                     // Для слайдера: тільки перша картинка завантажується швидко
                     const currentLoadingAttr = (imgIndex === 0 && isLcpCandidate) ? 'fetchpriority="high"' : 'loading="lazy"';
-                    return `<img src="${optimizedUrl}" data-original="${fullUrl}" ${currentLoadingAttr} alt="Cover" class="book-cover" onclick="openModal(this.dataset.original)" onerror="this.src='assets/images/study-icon.png'">`;
+                    return `<img src="${fullUrl}" data-original="${fullUrl}" ${currentLoadingAttr} decoding="async" alt="Cover" class="book-cover" onclick="openModal(this.dataset.original)" onerror="this.src='assets/images/study-icon.png'">`;
                 }).join('');
                 sliderControls = `
                     <button class="slider-btn prev-btn" onclick="event.preventDefault(); this.parentElement.querySelector('.cover-slider').scrollBy({left: -200, behavior: 'smooth'})">❮</button>
@@ -146,14 +134,12 @@ function renderBooks(reset = true) {
                 `;
             } else if (Array.isArray(book.coverUrls) && book.coverUrls.length === 1) {
                 const url = book.coverUrls[0];
-                const fullUrl = (url.startsWith('photos/') || url.startsWith('icon/')) ? 'assets/' + url : url;
-                const optimizedUrl = getImageUrl(url);
-                imagesHtml = `<img src="${optimizedUrl}" data-original="${fullUrl}" ${loadingAttr} alt="Cover" class="book-cover" onclick="openModal(this.dataset.original)" onerror="this.src='assets/images/study-icon.png'">`;
+                const fullUrl = getImageUrl(url);
+                imagesHtml = `<img src="${fullUrl}" data-original="${fullUrl}" ${loadingAttr} decoding="async" alt="Cover" class="book-cover" onclick="openModal(this.dataset.original)" onerror="this.src='assets/images/study-icon.png'">`;
             } else {
                 const url = book.coverUrl || 'assets/images/study-icon.png';
-                const fullUrl = (url.startsWith('photos/') || url.startsWith('icon/')) ? 'assets/' + url : url;
-                const optimizedUrl = getImageUrl(url);
-                imagesHtml = `<img src="${optimizedUrl}" data-original="${fullUrl}" ${loadingAttr} alt="Cover" class="book-cover" onclick="openModal(this.dataset.original)" onerror="this.src='assets/images/study-icon.png'">`;
+                const fullUrl = getImageUrl(url);
+                imagesHtml = `<img src="${fullUrl}" data-original="${fullUrl}" ${loadingAttr} decoding="async" alt="Cover" class="book-cover" onclick="openModal(this.dataset.original)" onerror="this.src='assets/images/study-icon.png'">`;
             }
 
             const pubClass = book.publisher && typeof book.publisher === 'string' ? book.publisher.split(' ')[0].toLowerCase() : 'default';
@@ -371,10 +357,7 @@ const closeModalBtn = document.querySelector('.close-modal');
 
 function openModal(src) {
     if (!src || src.includes('study-icon.png')) return; // Не відкриваємо заглушку
-    if (src.startsWith('photos/') || src.startsWith('icon/')) {
-        src = 'assets/' + src;
-    }
-    modalImg.src = src;
+    modalImg.src = getImageUrl(src);
     imageModal.classList.add('show');
     document.body.style.overflow = 'hidden'; // Забороняємо скрол фону
 }
