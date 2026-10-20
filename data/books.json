@@ -24804,5 +24804,14 @@
       "assets/photos/cover_7520.webp"
     ],
     "message_id": 7520
+  },
+  {
+    "title": "Lucky Star",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "assets/photos/cover_7526.webp"
+    ],
+    "message_id": 7526
   }
 ]
