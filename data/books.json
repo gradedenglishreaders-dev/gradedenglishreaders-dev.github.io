@@ -24876,5 +24876,14 @@
       "assets/photos/cover_7544.webp"
     ],
     "message_id": 7544
+  },
+  {
+    "title": "Sports Shorts",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "assets/photos/cover_7550.webp"
+    ],
+    "message_id": 7550
   }
 ]
