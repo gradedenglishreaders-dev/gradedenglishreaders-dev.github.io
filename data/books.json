@@ -24894,5 +24894,15 @@
       "assets/photos/cover_7553.webp"
     ],
     "message_id": 7553
+  },
+  {
+    "title": "Strange World - Adventure Awaits",
+    "publisher": "Step Into Reading",
+    "level": "A2",
+    "coverUrls": [
+      "photos/cover_7556_mvxtn7q9_1.webp",
+      "photos/cover_7556_mvxtnaw9_2.webp"
+    ],
+    "message_id": 7556
   }
 ]
